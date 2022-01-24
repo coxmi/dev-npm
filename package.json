@@ -4,9 +4,11 @@
   "private": true,
   "browserslist": "> 1%, ie >= 10",
   "config": {
-    "css": "httpdocs/assets/css/main.less",
-    "js": "httpdocs/assets/js/main.js",
-    "public": "httpdocs/assets/dist"
+    "public": "./httpdocs/assets/dist",
+    "entry": [
+      "./httpdocs/assets/css/main.less",
+      "./httpdocs/assets/js/main.js"
+    ]
   },
   "scripts": {
     "watch": "webpack --watch --mode=development",

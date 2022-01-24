@@ -7,11 +7,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts')
 
-const css = relative(package.config.css || '')
-const js = relative(package.config.js || '')
-const public = relative(package.config.public || '')
-
-
 const cssLoaders = (useModules = false) => [
 	{ loader: MiniCssExtractPlugin.loader },
 	{ 	
@@ -35,18 +30,23 @@ const cssLoaders = (useModules = false) => [
 	}
 ]
 
-
 const client = (env, options) => ({
-  	entry: [
-  		css, js
-  	],
+  	entry: package.config.entry || {},
   	output: {
-		path: public,
+		path: relative(package.config.public || ''),
 		filename: '[name].js',
   	},
   	mode: 'production',
   	devtool: 'source-map',
-  	stats: 'errors-only',
+  	stats: {
+		all: false,
+		assets: true,
+		assetsSort: '!size',
+		assetsSpace: 10,
+		relatedAssets: false,
+		cachedAssets: false,
+		errors: true,
+  	},
   	module: {
 		rules: [
 			{
