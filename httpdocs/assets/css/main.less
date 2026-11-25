@@ -1,24 +1,21 @@
 
 // global
-@import "global/animations";
-@import "global/body";
-@import "global/breakpoints";
-@import "global/debug";
-@import "global/reset";
-@import "global/typography";
+@import "global/a.less";
+@import "global/body.less";
+@import "global/reset.less";
+@import "global/typography.less";
 
-// components
-@import "components/a";
-@import "components/button";
-@import "components/grid";
-@import "components/icon";
-@import "components/page-width";
-@import "components/spacing";
+// modules for use in all components
+@import "modules/animations.less";
+@import "modules/grid.less";
+@import "modules/page-width.less";
+@import "modules/spacing.less";
 
-// main
-@import "mixins";
-@import "utility";
-@import "variables";
+// mixins/variables
+@import "breakpoints.less";
+@import "mixins.less";
+@import "variables.less";
 
-// overrides
-@import "overrides";
+// utility/overrides
+@import "utility.less";
+@import "overrides.less";

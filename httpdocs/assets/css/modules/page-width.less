@@ -8,7 +8,7 @@
 	margin-right:auto;
 
 	// 1em from viewport edge on mobile
-	min-width:(@body-min-width - 2em);
+	min-width:calc(var(--body-min-width) - 2em);
 	
 	max-width:90vw;
 	@media(min-width:@small) { max-width:80vw }

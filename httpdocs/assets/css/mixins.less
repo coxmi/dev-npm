@@ -32,9 +32,9 @@
 
 .for(@number, @rules) {
     & {
-        .loop(@number);
-        .loop(@i) when (@i > 0) {
-            .loop((@i - 1));
+        .for(@number);
+        .for(@i) when (@i > 0) {
+            .for((@i - 1));
             @rules();
         }
     }   
@@ -50,9 +50,9 @@
 
 .for-breakpoints(@rules) {
     & {
-        .loop(length(@breakpoints));
-        .loop(@for-breakpoints-i) when (@for-breakpoints-i > 0) {
-            .loop((@for-breakpoints-i - 1));
+        .for(length(@breakpoints));
+        .for(@for-breakpoints-i) when (@for-breakpoints-i > 0) {
+            .for((@for-breakpoints-i - 1));
             @breakpoint: e(extract(@breakpoints, @for-breakpoints-i));
             @width: @@breakpoint;
             @media(min-width:@width) {
@@ -77,3 +77,28 @@
         .for(@n, @rules);
     });
 }
+
+
+/*
+    debug
+    adds a small debug overlay to the window to discern 
+    which @breakpoint is currently showing
+
+    only shows when @debug: true;
+*/
+
+.debug () when (@debug) {
+    .for-breakpoints({
+        body::before {
+            content: %("%a", @breakpoint);
+            background:tomato;
+            padding:0.3em 0.5em;
+            position:fixed;
+            bottom:0; right:0;
+            z-index:9999999;
+            color:white;
+        }
+    });
+}
+
+.debug();
